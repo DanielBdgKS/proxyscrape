@@ -1,0 +1,42 @@
+{% set setup = load_setup_py_data() %}
+{% set name = 'proxyscrape' %}
+
+package:
+  name: {{ name }}
+  version: {{ setup.get('version') }}
+source:
+  path: .
+
+build:
+  number: 1
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+
+requirements:
+  build:
+    - setuptools
+    - git
+
+  host:
+    - python {{ python }}
+    - pip
+
+  run:
+    - python {{ python }}
+    - BeautifulSoup4
+    - requests
+
+about:
+  license: {{ setup.get('license') }}
+  license_file: {{ setup.get('license_file') }}
+  summary: {{ setup.get('description') }}
+  home: https://github.com/MarkusFraKS/{{ name }}/releases/tag/v{{ setup.get('version') }}
+  doc_url: {{ setup.get('url') }}
+  dev_url: https://github.com/MarkusFraKS/{{ name }}
+
+test:
+  imports:
+    - {{ name }}
+
+extra:
+  recipe-maintainers:
+    - MarkusFraKS

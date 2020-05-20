@@ -18,6 +18,7 @@ setup(
     author='Jared Gillespie',
     author_email='jaredlgillespie@hotmail.com',
     license='MIT',
+    license_file='LICENSE.txt',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
